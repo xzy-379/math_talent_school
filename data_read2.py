@@ -49,7 +49,7 @@ def name_check(name):
                 return 1
         return 0
     
-def pznCheck(pzn):
+def pzn_check(pzn):
     with open(PZN_PATH, "r") as file:
         text = file.read()
         pzn_list = text.splitlines()
@@ -113,7 +113,7 @@ def check(path):
     estimated_distance = distance_check(distance)
     estimated_name = name_check(teststelle_name)
     estimated_time = time_check(time)
-    estimated_pzn = pznCheck(pzn)
+    estimated_pzn = pzn_check(pzn)
 
     return (estimated_distance, estimated_name, estimated_pzn, estimated_time)
     
