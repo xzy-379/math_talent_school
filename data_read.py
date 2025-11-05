@@ -8,6 +8,8 @@ import pgeocode
 # constants
 DEBUG = False
 
+PZN_PATH = "actual_pzn.csv"
+DETAILS_PATH = "actualdetails_teststelle.csv"
 
 MIN_DIST = 50  # km
 MAX_DIST = 100  # km
@@ -16,8 +18,16 @@ MAX_DIST = 100  # km
 SAFE_TEST_TIME = (30, 45)
 MAX_TEST_TIME = 180
 
+
 def pzn_check(pzn):
-    return True
+    with open(PZN_PATH, "r") as file:
+        text = file.read()
+        pzn_list = text.splitlines()
+        for legit_pzn in pzn_list:
+            if pzn == legit_pzn:
+                return 1
+
+        return 0
 
 
 def name_check(name):
@@ -38,7 +48,8 @@ def distance_check(distance):
 
 def get_distance(postcode_patient, postcode_testcenter):
     geo_dist = pgeocode.GeoDistance("de")
-    distance = geo_dist.query_postal_code(postcode_patient, postcode_testcenter)
+    distance = geo_dist.query_postal_code(
+        postcode_patient, postcode_testcenter)
     return distance
 
 
@@ -90,7 +101,6 @@ def check(path):
     checked_distance = distance_check(distance)
 
     return
-
 
 
 if __name__ == "__main__":
