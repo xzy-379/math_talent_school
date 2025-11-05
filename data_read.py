@@ -21,17 +21,23 @@ MAX_TEST_TIME = 180
 
 def pzn_check(pzn):
     with open(PZN_PATH, "r") as file:
-        text = file.read()
-        pzn_list = text.splitlines()
-        for legit_pzn in pzn_list:
-            if pzn == legit_pzn:
-                return 1
+        pzn_list = file.read().splitlines()
 
-        return 0
+    for legit_pzn in pzn_list:
+        if pzn == legit_pzn:
+            return 1
+
+    return 0
 
 
 def name_check(name):
-    return True
+    with open(DETAILS_PATH, "r") as file:
+        details = file.read().splitlines()
+
+    for detail in details[1:]:
+        if name == detail.split(",")[1]:
+            return 1
+    return 0
 
 
 def distance_check(distance):
@@ -80,8 +86,6 @@ def get_time(time_test, time_result):
 
 
 def check(path):
-    # Auslesen der Datei
-
     with open(path, "r") as file:
         data = json.load(file)
     patienten_postleitzahl = data["patienten_postleitzahl"]
@@ -100,7 +104,8 @@ def check(path):
     checked_time = time_check(time)
     checked_distance = distance_check(distance)
 
-    return
+
+    return checked_name, checked_pzn, checked_time, checked_distance
 
 
 if __name__ == "__main__":
