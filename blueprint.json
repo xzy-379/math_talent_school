@@ -1,11 +1,16 @@
 {
   "patienten_id":0,
-  "patienten_postleitzahl":"00000",
+  "patienten_postleitzahl":"80333",
   "teststelle":{
+<<<<<<< HEAD
     "name":"NAME",
     "postleitzahl":"00000",
+=======
+    "name":"Augsburg Schnelltestzentrum",
+    "postleitzahl":"80335",
+>>>>>>> a42ddc2 (upload David)
     "datum":"2025-11-04 16:10"
   },
-  "pzn":"000-000-000",
+  "pzn":"618-472-361",
   "datum":"2025-11-04 16:11"
 }

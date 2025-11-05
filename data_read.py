@@ -1,11 +1,14 @@
 import json
 import math
-import os
+import sys
 from datetime import datetime
 
 import pgeocode
 
 # constants
+DEBUG = False
+
+
 MIN_DIST = 50  # km
 MAX_DIST = 100  # km
 
@@ -28,9 +31,21 @@ MAX_TEST_TIME = 180
 """
 
 
+<<<<<<< HEAD
+=======
+def pzn_check(pzn):
+    return True
+
+
+def name_check(name):
+    return True
+>>>>>>> a42ddc2 (upload David)
 
 
 def distance_check(distance):
+    if math.isnan(distance):
+        return 0
+
     if distance <= MIN_DIST:
         return 1
     elif distance <= MAX_DIST:
@@ -40,10 +55,8 @@ def distance_check(distance):
 
 
 def get_distance(postcode_patient, postcode_testcenter):
-
     geo_dist = pgeocode.GeoDistance("de")
-    distance = geo_dist.query_postal_code(
-        postcode_patient, postcode_testcenter)
+    distance = geo_dist.query_postal_code(postcode_patient, postcode_testcenter)
     return distance
 
 
@@ -78,14 +91,29 @@ def check(path):
 
     with open(path, "r") as file:
         data = json.load(file)
-
-    print(data["teststelle"]["datum"])
     patienten_postleitzahl = data["patienten_postleitzahl"]
     teststelle_postleitzahl = data["teststelle"]["Postleitzahl"]
-    get_distance(patienten_postleitzahl, teststelle_postleitzahl)
+    time_test = data["teststelle"]["datum"]
+    time_result = data["datum"]
+
+    name = data["teststelle"]["name"]
+    pzn = data["pzn"]
+
+    distance = get_distance(patienten_postleitzahl, teststelle_postleitzahl)
+    time = get_time(time_test, time_result)
+
+    checked_name = name_check(name)
+    checked_pzn = pzn_check(pzn)
+    checked_time = time_check(time)
+    checked_distance = distance_check(distance)
+
+    return
 
 
 
 if __name__ == "__main__":
-    check(input("hier Dateiname eingeben: "))
+    if len(sys.argv) > 1:
+        check(sys.argv[1])
 
+    else:
+        check(input("input name of document: "))
