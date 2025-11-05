@@ -85,7 +85,7 @@ def check(path):
     with open(path, "r") as file:
         data = json.load(file)
     patienten_postleitzahl = data["patienten_postleitzahl"]
-    teststelle_postleitzahl = data["teststelle"]["Postleitzahl"]
+    teststelle_postleitzahl = data["teststelle"]["postleitzahl"]
     time_test = data["teststelle"]["datum"]
     time_result = data["datum"]
 
