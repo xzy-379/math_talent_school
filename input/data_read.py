@@ -3,6 +3,7 @@ import math
 import sys
 from datetime import datetime
 
+import matplotlib.pyplot as plt
 import pgeocode
 
 # constants
@@ -104,7 +105,6 @@ def check(path):
     checked_time = time_check(time)
     checked_distance = distance_check(distance)
 
-
     return checked_name, checked_pzn, checked_time, checked_distance
 
 
@@ -114,3 +114,21 @@ if __name__ == "__main__":
 
     else:
         check(input("input name of document: "))
+
+    # graph for time
+    x = [i for i in range(int(MAX_TEST_TIME*1.1))]
+    y= [time_check(i) for i in x]
+
+    plt.plot(x, y)
+    plt.ylabel("checked_time")
+    plt.xlabel("time in minutes")
+    plt.savefig("time.png")
+    plt.close()
+    # graph for distance
+    x= [i for i in range(int(MAX_DIST*1.1))]
+    y= [distance_check(i) for i in x]
+
+    plt.plot(x, y)
+    plt.ylabel("checked_distance")
+    plt.xlabel("distance in km")
+    plt.savefig("distance.png")
