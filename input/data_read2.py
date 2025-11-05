@@ -1,6 +1,5 @@
 import json
 import math
-import os
 from datetime import datetime
 import csv
 
@@ -135,6 +134,7 @@ def estimate_sus(distance_check, name_check, time_check, pzn_check):
         lowsus = min(time_check, distance_check)
 
     sus = 0.6 * highsus + 0.3 * midsus + 0.1 * lowsus
+    return sus
 
 
 if __name__ == "__main__":
