@@ -1,0 +1,11 @@
+{
+  "patienten_id":11,
+  "patienten_postleitzahl":"70188",
+  "teststelle":{
+    "name":"Stuttgart Schnelltestzentrum",
+    "postleitzahl":"70188",
+    "datum":"2024-05-15 14:30"
+  },
+  "pzn":"153-602-849",
+  "datum":"2024-05-15 14:58"
+}

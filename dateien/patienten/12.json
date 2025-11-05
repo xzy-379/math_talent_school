@@ -1,0 +1,11 @@
+{
+  "patienten_id":12,
+  "patienten_postleitzahl":"90461",
+  "teststelle":{
+    "name":"Nürnberg Teststation",
+    "postleitzahl":"90402",
+    "datum":"2025-03-16 09:08"
+  },
+  "pzn":"237-845-610",
+  "datum":"2025-03-16 09:50"
+}

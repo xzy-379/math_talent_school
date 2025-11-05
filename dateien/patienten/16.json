@@ -1,0 +1,11 @@
+{
+  "patienten_id":16,
+  "patienten_postleitzahl":"30170",
+  "teststelle":{
+    "name":"Hannover Schnelltest",
+    "postleitzahl":"30168",
+    "datum":"2021-11-04 10:14"
+  },
+  "pzn":"074-179-125",
+  "datum":"2021-11-04 16:50"
+}

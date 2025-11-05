@@ -1,0 +1,11 @@
+{
+  "patienten_id":25,
+  "patienten_postleitzahl":"63065",
+  "teststelle":{
+    "name":"Offenbach Schnelltest",
+    "postleitzahl":"63065",
+    "datum":"2025-12-12 12:12"
+  },
+  "pzn":"580-134-926",
+  "datum":"2025-12.12 13:01"
+}

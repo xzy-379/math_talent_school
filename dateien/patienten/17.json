@@ -1,0 +1,11 @@
+{
+  "patienten_id":17,
+  "patienten_postleitzahl":"13407",
+  "teststelle":{
+    "name":"Berlin Schnelltest",
+    "postleitzahl":"13407",
+    "datum":"2020-08-03 12:35"
+  },
+  "pzn":"723-467-198",
+  "datum":"2020-08-03 13:05"
+}

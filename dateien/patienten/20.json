@@ -1,0 +1,11 @@
+{
+  "patienten_id":20,
+  "patienten_postleitzahl":"82152",
+  "teststelle":{
+    "name":"München Schnelltest",
+    "postleitzahl":"80333",
+    "datum":"2022-06-01 14:06"
+  },
+  "pzn":"643-198-243",
+  "datum":"2022-06-01 14:39"
+}

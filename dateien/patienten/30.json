@@ -1,0 +1,11 @@
+{
+  "patienten_id":30,
+  "patienten_postleitzahl":"93055",
+  "teststelle":{
+    "name":"Testzentrum Regensburg",
+    "postleitzahl":"93047",
+    "datum":"2011-11-11 20:11"
+  },
+  "pzn":"765-203-948",
+  "datum":"2011-11-11 20:41"
+}

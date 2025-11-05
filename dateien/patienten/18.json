@@ -1,0 +1,11 @@
+{
+  "patienten_id":18,
+  "patienten_postleitzahl":"67663",
+  "teststelle":{
+    "name":"Kaiserslautern Schnelltest",
+    "postleitzahl":"67655",
+    "datum":"2023-12-01 09:40"
+  },
+  "pzn":"154-398-451",
+  "datum":"2023-12-11 09:59"
+}

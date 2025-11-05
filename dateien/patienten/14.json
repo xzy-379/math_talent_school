@@ -1,0 +1,11 @@
+{
+  "patienten_id":14,
+  "patienten_postleitzahl":"10319",
+  "teststelle":{
+    "name":"Testzentrum Mitte Berlin",
+    "postleitzahl":"10117",
+    "datum":"2025-10-21 20:20"
+  },
+  "pzn":"742-183-905",
+  "datum":"2025-10-21 21:08"
+}

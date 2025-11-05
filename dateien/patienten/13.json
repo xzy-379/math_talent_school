@@ -1,0 +1,11 @@
+{
+  "patienten_id":13,
+  "patienten_postleitzahl":"24103",
+  "teststelle":{
+    "name":"Kiel Teststation",
+    "postleitzahl":"24103",
+    "datum":"2024-01-01 09:00"
+  },
+  "pzn":"433-972-580",
+  "datum":"2024-01-01 09:15"
+}

@@ -1,0 +1,10 @@
+{
+    "1":{
+    "id":"TC0001",
+    "name": "Testzentrum Mitte Berlin",
+    "address":"Graf-Adolf-Straße 12",
+    "plz":"10117",
+    "city":"Berlin",
+    "pzn":"123-456-789"
+}
+}

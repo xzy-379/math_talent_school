@@ -1,0 +1,11 @@
+{
+  "patienten_id":21,
+  "patienten_postleitzahl":"30159",
+  "teststelle":{
+    "name":"Hannover Corona-Schnelltest",
+    "postleitzahl":"30159",
+    "datum":"2025-09-09 09:09"
+  },
+  "pzn":"418-962-053",
+  "datum":"2025-09-09 09:54"
+}

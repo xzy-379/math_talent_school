@@ -118,20 +118,23 @@ def check(path):
     return (estimated_distance, estimated_name, estimated_pzn, estimated_time)
     
 def estimate_sus(distance_check, name_check, time_check, pzn_check):
-    high_sus = 0
-    med_sus = 0
-    low_sus = 0
-    print("distance" + str(distance_check))
-    print("name" + str(name_check))
-    print("time" + str(time_check))
-    print("pzn" + str(pzn_check))
-    if pzn_check == 0 or name_check == 0:
-        high_sus = 1
-    if distance_check <= 0.4 or time_check <= 0.4:
-        med_sus = max(1 - distance_check, 1 - time_check)
-    else:
-        low_sus = min (1 -distance_check, 1 - time_check)
-    return max(high_sus, med_sus*0.7, low_sus*0.3)
+    
+    highsus = 0
+    midsus = 0
+    lowsus = 0
+
+    if name_check == 0 or pzn_check == 0:
+        highsus = 1
+        midsus = 1
+        lowsus = 1
+
+    if time_check <= 0.6 or distance_check <= 0.6:
+        midsus = max(time_check, distance_check)
+        lowsus = 1
+    if time_check > 0.4 and distance_check > 0.4:
+        lowsus = min(time_check, distance_check)
+
+    sus = 0.6 * highsus + 0.3 * midsus + 0.1 * lowsus
 
 
 if __name__ == "__main__":
