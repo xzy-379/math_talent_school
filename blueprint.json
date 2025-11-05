@@ -1,0 +1,11 @@
+{
+  "patienten_id":0,
+  "patienten_postleitzahl":"00000",
+  "teststelle":{
+    "Teststelle":"NAME",
+    "Postleitzahl":"00000",
+    "datum":"2025-11-04 16:10"
+  },
+  "pzn":"000-000-000",
+  "datum":"2025-11-04 16:11"
+}
