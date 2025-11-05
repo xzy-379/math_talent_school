@@ -1,0 +1,11 @@
+{
+  "patienten_id":27,
+  "patienten_postleitzahl":"80804",
+  "teststelle":{
+    "name":"Corona Schnelltest München Hauptbahnhof",
+    "postleitzahl":"80335",
+    "datum":"2025-12-06 15:24"
+  },
+  "pzn":"689-301-472",
+  "datum":"2025-12-06 16:02"
+}

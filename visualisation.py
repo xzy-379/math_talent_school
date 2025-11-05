@@ -1,5 +1,11 @@
 import tkinter as tk
 
+import input_files.data_read as data_read
+
+file = "test_data\01.json"
+
+x = data_read.check(file)
+print(x)
 root = tk.Tk()
 root.title = "talent_school"
 

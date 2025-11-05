@@ -1,0 +1,11 @@
+{
+  "patienten_id":23,
+  "patienten_postleitzahl":"79098",
+  "teststelle":{
+    "name":"Testzentumm Freiburg",
+    "postleitzahl":"79098",
+    "datum":"2025-05-25 07:09"
+  },
+  "pzn":"371-695-842",
+  "datum":"2025-05-25 07:09"
+}
