@@ -2,6 +2,7 @@ import json
 import math
 import os
 from datetime import datetime
+import csv
 
 import pgeocode
 
@@ -12,6 +13,9 @@ MAX_DIST = 100  # km
 
 SAFE_TEST_TIME = (30, 45)
 MAX_TEST_TIME = 180
+
+PZN_PATH = "actual_pzn.csv"
+DETAILS_PATH = "actualdetails_teststelle.csv"
 # --- inputs ---
 """
 {
@@ -37,16 +41,23 @@ def distance_check(distance):
         return (MAX_DIST - distance) / (MAX_DIST - MIN_DIST)
     else:
         return 0
-def name_check(name, data):
-    for stelle in data:
-        if stelle["name"] == name:
-            return 1
-    return 0
-def pznCheck(pzn, data):
-    for stelle in data:
-        if stelle["pzn"] == pzn:
-            return 1
-    return 0
+def name_check(name):
+    with open(DETAILS_PATH, "r") as file:
+        actual_data = csv.DictReader(file)
+        for stelle in actual_data:
+            if stelle["name"] == name:
+                return 1
+        return 0
+    
+def pznCheck(pzn):
+    with open(PZN_PATH, "r") as file:
+        text = file.read()
+        pzn_list = text.splitlines()
+        for legit_pzn in pzn_list:
+            if pzn == legit_pzn:
+                return 1
+
+        return 0
 
 
 def get_distance(postcode_patient, postcode_testcenter):
@@ -85,12 +96,7 @@ def get_time(time_test, time_result):
 
 def check(path):
     # Auslesen der Datei
-    actual_data = {"1":
-       {
-           "pzn":"000-000-000",
-           "name":"irgendwas"
-       }
-        }
+    
     with open(path, "r") as file:
         data = json.load(file)
 
@@ -105,8 +111,8 @@ def check(path):
     time = get_time(time_test, time_result)
     distance = get_distance(patienten_postleitzahl, teststelle_postleitzahl)
     estimated_distance = distance_check(distance)
-    estimated_name = name_check(teststelle_name, actual_data)
-    estimated_time = time_check(time, actual_data)
+    estimated_name = name_check(teststelle_name)
+    estimated_time = time_check(time)
     estimated_pzn = pznCheck(pzn)
 
     return (estimated_distance, estimated_name, estimated_pzn, estimated_time)
@@ -115,16 +121,20 @@ def estimate_sus(distance_check, name_check, time_check, pzn_check):
     high_sus = 0
     med_sus = 0
     low_sus = 0
+    print("distance" + str(distance_check))
+    print("name" + str(name_check))
+    print("time" + str(time_check))
+    print("pzn" + str(pzn_check))
     if pzn_check == 0 or name_check == 0:
         high_sus = 1
-    if distance_check >= 0.6 or time_check >= 0.6:
-        med_sus = max(distance_check, time_check)
+    if distance_check <= 0.4 or time_check <= 0.4:
+        med_sus = max(1 - distance_check, 1 - time_check)
     else:
-        low_sus = min (distance_check, time_check)
-    return max(high_sus, med_sus, low_sus)
+        low_sus = min (1 -distance_check, 1 - time_check)
+    return max(high_sus, med_sus*0.7, low_sus*0.3)
 
 
 if __name__ == "__main__":
     (estimated_distance, estimated_name, estimated_pzn, estimated_time) = check(input("hier Dateiname eingeben: "))
     sus = estimate_sus(distance_check=estimated_distance, time_check=estimated_time, name_check=estimated_name, pzn_check=estimated_pzn)
-    print("Fraud probability: " + sus)
+    print("Fraud probability: " + str(sus))
