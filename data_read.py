@@ -15,31 +15,13 @@ MAX_DIST = 100  # km
 
 SAFE_TEST_TIME = (30, 45)
 MAX_TEST_TIME = 180
-# --- inputs ---
-"""
-{
-  "patienten_id":0,
-  "patienten_postleitzahl":"00000",
-  "teststelle":{
-    "Teststelle":"NAME",
-    "Postleitzahl":"00000",
-    "datum":"2025-11-04 16:10"
-  },
-  "pzn":"000-000-000",
-  "datum":"2025-11-04 16:11"
-}
-"""
 
-
-<<<<<<< HEAD
-=======
 def pzn_check(pzn):
     return True
 
 
 def name_check(name):
     return True
->>>>>>> a42ddc2 (upload David)
 
 
 def distance_check(distance):
