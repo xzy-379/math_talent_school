@@ -23,12 +23,15 @@ MAX_TEST_TIME = 180
 def pzn_check(pzn):
     with open(PZN_PATH, "r") as file:
         pzn_list = file.read().splitlines()
-
+    min_diff_rate = 1.0
     for legit_pzn in pzn_list:
         if pzn == legit_pzn:
             return 1
-
-    return 0
+        else:
+            pzn_diff_rate = rate_name_diff(pzn, legit_pzn)
+            if pzn_diff_rate < min_diff_rate:
+                min_diff_rate = pzn_diff_rate
+    return 1 - (1/(min_diff_rate + 1))
 
 
 def name_check(name):
@@ -53,6 +56,17 @@ def rate_name_diff(name_bogen, name_actual):
             differences += 1
     if differences == 0:
         return 0
+    return 1 - (1/(differences + 1))
+
+def rate_pzn_diff(pzn_bogen, pzn_actual):
+    differences = len(pzn_bogen) - len(pzn_actual)
+    
+    for i in range(min(len(pzn_actual), len(pzn_bogen))):
+        if pzn_bogen[i] != pzn_actual[i]:
+            differences += 1
+    if differences == 0:
+        return 0
+    print("pzn diff:" + differences)
     return 1 - (1/(differences + 1))
 
 

@@ -42,12 +42,16 @@ def evaluate(teststelle, PZN, time_diff, add_diff):
 
 def estimate_Oliver(distance_check, name_check, time_check, pzn_check):
     
-    highsus = 0
-    midsus = 0
-    lowsus = 0
+    highsus = 0.0
+    midsus = 0.0
+    lowsus = 0.0
 
     if name_check < 0.5 or pzn_check < 0.5:
-        highsus = max(name_check, pzn_check)
+        highsus = max(1 - name_check, 1 - pzn_check)
+        midsus = highsus / 2
+    elif name_check == 1 and pzn_check == 1:
+        highsus = 0.0
+        midsus = 0.0
     else:
         highsus = 0.2
         midsus = 0.5 
@@ -55,9 +59,13 @@ def estimate_Oliver(distance_check, name_check, time_check, pzn_check):
     if time_check <= 0.6 or distance_check <= 0.6:
         highsus = max(time_check, distance_check) * 0.5
         midsus = max(time_check, distance_check)
-        lowsus = 1
+        lowsus = 1.0
     if time_check > 0.6 and distance_check > 0.6:
-        lowsus = min(time_check, distance_check)
+        lowsus = min(1 - time_check, 1 - distance_check)
 
     sus = 0.6 * highsus + 0.3 * midsus + 0.1 * lowsus
+    sus = round(sus, 3)
+    highsus = round(highsus, 3)
+    midsus = round(midsus, 3)
+    lowsus = round(lowsus, 3)
     return (sus, (highsus, midsus, lowsus))
