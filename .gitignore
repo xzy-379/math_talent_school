@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-./input/data_read2.py
-/input/__pycache__
-=======
 # Python cache files
 __pycache__/
 *.pyc
@@ -13,4 +9,5 @@ __pycache__/
 # Generated images
 *.png
 
->>>>>>> 27cf6da7fc0148c1bfb63245a3d7342baed0f434
+# Test files
+test.py
