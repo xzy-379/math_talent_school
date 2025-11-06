@@ -16,12 +16,13 @@ input_values = ()
 tested_values = ()
 
 
-def get_graphics(time, distance):
+def get_graphics(time, distance, points=True):
 
     # graph for time
     x = [i for i in range(int(dw.MAX_TEST_TIME * 1.1))]
     y = [dw.time_check(i) for i in x]
-    plt.scatter(time, dw.time_check(time), color="red", s=100, zorder=5, label="time")
+    if points:
+        plt.scatter(time, dw.time_check(time), color="red", s=100, zorder=5, label="time")
     plt.plot(x, y)
     plt.ylabel("checked_time")
     plt.xlabel("time in minutes")
@@ -31,14 +32,15 @@ def get_graphics(time, distance):
     # graph for distance
     x = [i for i in range(int(dw.MAX_DIST * 1.1))]
     y = [dw.distance_check(i) for i in x]
-    plt.scatter(
-        distance,
-        dw.distance_check(distance),
-        color="red",
-        s=100,
-        zorder=5,
-        label="distance",
-    )
+    if points:
+        plt.scatter(
+            distance,
+            dw.distance_check(distance),
+            color="red",
+            s=100,
+            zorder=5,
+            label="distance",
+        )
     plt.plot(x, y)
     plt.ylabel("checked_distance")
     plt.xlabel("distance in km")
@@ -82,6 +84,7 @@ def update():
 
 if __name__ == "__main__":
     new_file(1)
+    get_graphics(0,0,False)
     root = tk.Tk()
     root.title("talent_school")
     root.geometry("1340x720")
