@@ -1,0 +1,11 @@
+{
+  "patienten_id":22,
+  "patienten_postleitzahl":"41061",
+  "teststelle":{
+    "name":"Monchengladbach Schnelltest",
+    "postleitzahl":"41061",
+    "datum":"2025-08-08 08:08"
+  },
+  "pzn":"654-280-197",
+  "datum":"2025-08-08 08:48"
+}
