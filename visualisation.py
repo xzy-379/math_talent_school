@@ -8,7 +8,7 @@ import output.sus_test as sus_test
 
 PATH = os.getcwd()
 
-file = PATH + "/test_data/22.json"
+file = PATH + "/test_data/30.json"
 
 
 def get_graphics(time, distance):
@@ -39,7 +39,7 @@ img_dist = PATH + "/input_files/distance.png"
 img_time = PATH + "/input_files/time.png"
 
 teststelle, PZN, time, distance, _ = input_values
-tested_values = sus_test.evaluate(teststelle, PZN, time, distance)
+tested_values = sus_test.estimate_Oliver(distance_check=distance, pzn_check=PZN, time_check=time, name_check=teststelle)
 root = tk.Tk()
 root.title("talent_school")
 root.geometry("1800x720")
