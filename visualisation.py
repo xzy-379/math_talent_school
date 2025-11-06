@@ -8,7 +8,7 @@ import output.sus_test as sus_test
 
 PATH = os.getcwd()
 
-file = PATH + "/test_data/14.json"
+file = PATH + "/test_data/01.json"
 
 img_dist_path = PATH + "/input_files/distance.png"
 img_time_path = PATH + "/input_files/time.png"
@@ -54,7 +54,7 @@ def new_file(num):
     teststelle, PZN, time, distance, original = input_values
     get_graphics(original[2], original[3])
 
-    tested_values = sus_test.estimate_Oliver(teststelle, PZN, time, distance)
+    tested_values = sus_test.estimate_Oliver(distance, teststelle, time, PZN)
 
 
 def update():

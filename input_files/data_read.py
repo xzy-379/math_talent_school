@@ -34,12 +34,26 @@ def pzn_check(pzn):
 def name_check(name):
     with open(DETAILS_PATH, "r") as file:
         details = file.read().splitlines()
-
+    min_difference_rate = 1.0
     for detail in details[1:]:
         stelle = detail.split(",")[1]
-        if name == detail.split(",")[1]:
+        if name == stelle:
             return 1
-    return 0
+        else:
+            name_diff_rate = rate_name_diff(stelle, name)
+            if name_diff_rate < min_difference_rate:
+                min_difference_rate = name_diff_rate
+    return 1 - min_difference_rate
+
+def rate_name_diff(name_bogen, name_actual):
+    differences = len(name_bogen) - len(name_actual)
+    
+    for i in range(min(len(name_actual), len(name_bogen))):
+        if name_bogen[i] != name_actual[i]:
+            differences += 1
+    if differences == 0:
+        return 0
+    return 1 - (1/(differences + 1))
 
 
 def distance_check(distance):
