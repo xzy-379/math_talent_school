@@ -64,6 +64,8 @@ def get_distance(postcode_patient, postcode_testcenter):
 
 
 def time_check(difference_minutes):
+    if difference_minutes <= 0:
+        return 0
     if difference_minutes <= SAFE_TEST_TIME[0]:
         return math.sin(difference_minutes * math.pi / (2 * SAFE_TEST_TIME[0]))
     if difference_minutes <= SAFE_TEST_TIME[1]:
@@ -86,6 +88,8 @@ def get_time(time_test, time_result):
 
     difference = time_result_convertet - time_test_convertet
     difference_minutes = difference.total_seconds() / 60
+    if difference_minutes <= 0:
+        return 0
     return difference_minutes
 
 
@@ -108,8 +112,8 @@ def check(path):
     checked_pzn = pzn_check(pzn)
     checked_time = time_check(time)
     checked_distance = distance_check(distance)
-    
-    original_values = (name,pzn,time,distance)
+
+    original_values = (name, pzn, time, distance)
     return checked_name, checked_pzn, checked_time, checked_distance, original_values
 
 
