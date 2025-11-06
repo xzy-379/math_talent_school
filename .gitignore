@@ -7,5 +7,5 @@ __pycache__/
 *.so
 
 # Generated images
-#*.png
+*.png
 
