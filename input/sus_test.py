@@ -54,7 +54,7 @@ def estimate_Oliver(distance_check, name_check, time_check, pzn_check):
     if time_check <= 0.6 or distance_check <= 0.6:
         midsus = max(time_check, distance_check)
         lowsus = 1
-    if time_check > 0.4 and distance_check > 0.4:
+    if time_check > 0.6 and distance_check > 0.6:
         lowsus = min(time_check, distance_check)
 
     sus = 0.6 * highsus + 0.3 * midsus + 0.1 * lowsus
