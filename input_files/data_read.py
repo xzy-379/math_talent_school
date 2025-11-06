@@ -1,5 +1,6 @@
 import json
 import math
+import os
 import sys
 from datetime import datetime
 
@@ -7,10 +8,11 @@ import matplotlib.pyplot as plt
 import pgeocode
 
 # constants
-DEBUG = False
+PATH = os.getcwd()
 
-PZN_PATH = "actual_pzn.csv"
-DETAILS_PATH = "actualdetails_teststelle.csv"
+PZN_PATH = PATH + "/input_files/actual_pzn.csv"
+DETAILS_PATH = PATH + "/input_files/actualdetails_teststelle.csv"
+
 
 MIN_DIST = 50  # km
 MAX_DIST = 100  # km
@@ -104,8 +106,9 @@ def check(path):
     checked_pzn = pzn_check(pzn)
     checked_time = time_check(time)
     checked_distance = distance_check(distance)
-
-    return checked_name, checked_pzn, checked_time, checked_distance
+    
+    original_values = (name,pzn,time,distance)
+    return checked_name, checked_pzn, checked_time, checked_distance, original_values
 
 
 if __name__ == "__main__":
@@ -116,8 +119,8 @@ if __name__ == "__main__":
         check(input("input name of document: "))
 
     # graph for time
-    x = [i for i in range(int(MAX_TEST_TIME*1.1))]
-    y= [time_check(i) for i in x]
+    x = [i for i in range(int(MAX_TEST_TIME * 1.1))]
+    y = [time_check(i) for i in x]
 
     plt.plot(x, y)
     plt.ylabel("checked_time")
@@ -125,8 +128,8 @@ if __name__ == "__main__":
     plt.savefig("time.png")
     plt.close()
     # graph for distance
-    x= [i for i in range(int(MAX_DIST*1.1))]
-    y= [distance_check(i) for i in x]
+    x = [i for i in range(int(MAX_DIST * 1.1))]
+    y = [distance_check(i) for i in x]
 
     plt.plot(x, y)
     plt.ylabel("checked_distance")
