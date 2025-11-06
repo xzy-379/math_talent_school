@@ -54,7 +54,7 @@ def new_file(num):
     teststelle, PZN, time, distance, original = input_values
     get_graphics(original[2], original[3])
 
-    tested_values = sus_test.evaluate(teststelle, PZN, time, distance)
+    tested_values = sus_test.estimate_Oliver(teststelle, PZN, time, distance)
 
 
 def update():
