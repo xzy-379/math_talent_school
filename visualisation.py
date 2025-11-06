@@ -61,6 +61,7 @@ def update():
     global file, img_time_path, img_dist_path, input_text, test_text
     new_file(int(entry.get()))
     input_text = f"input values: \nlegit name: {input_values[0]} \nlegit pzn: {input_values[1]} \nlegit time: {input_values[2]} \nlegit distance: {input_values[3]}"
+    print(tested_values)
     test_text = f"overall fraud score: {tested_values[0]*100}% \nhigh sus: {tested_values[1][0]} \nmid sus: {tested_values[1][1]} \nlow sus: {tested_values[1][2]}"
     img_time = tk.PhotoImage(file=img_time_path)
     image_time_label.config(image=img_time)
