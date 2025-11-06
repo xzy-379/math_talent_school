@@ -1,1 +1,11 @@
-./input/data_read2.py
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Generated images
+#*.png
+
