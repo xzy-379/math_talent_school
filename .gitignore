@@ -9,8 +9,5 @@ __pycache__/
 # Generated images
 *.png
 
-<<<<<<< HEAD
-=======
 # Test files
 test.py
->>>>>>> fd67f5704ba8f20e1abd71679f65b62bbacead7d
